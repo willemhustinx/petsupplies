@@ -80,7 +80,7 @@ public class Account implements Serializable {
         String stringToEncrypt = email + "-" + password;
 
         String encryptedString = "";
-        String base64encodedString;
+        String base64encodedString = "";
 
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
