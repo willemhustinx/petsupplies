@@ -1,0 +1,45 @@
+<nav class="navbar navbar-default" ng-controller="MenuController as menu">
+	<div class="container-fluid">
+		<ul class="nav navbar-nav">
+			<li><a href="#/">{{main.language.translation.HOME}}</a></li>
+			<li><a href="#/cart">{{main.language.translation.SHOPPINGCART}}</a></li>
+			<li ng-show="!menu.loggedIn()"><a href="#/createAccount">{{main.language.translation.SIGNUPLOGIN}}</a></li>	
+		</ul>
+
+		<ul ng-show="menu.loggedIn()" class="nav navbar-nav navbar-right">
+			<li class="dropdown" uib-dropdown>
+				<a href="#" uib-dropdown-toggle class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span	class="glyphicon glyphicon-user" aria-hidden="true"></span> <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="#/account">{{main.language.translation.ACCOUNT}}</a></li>
+					<li role="separator" class="divider"></li>
+					<li ng-show="main.admin.isAdmin"><a href="#/admin">Admin</a></li>
+					<li ng-show="main.admin.isAdmin" role="separator" class="divider"></li>
+					<li><a href="" ng-click="menu.logOut()">{{main.language.translation.LOGOUT}}</a></li>
+				</ul>
+			</li>
+		</ul>
+
+		<ul class="nav navbar-nav navbar-right">
+	        <li class="dropdown" uib-dropdown>
+	          <a href="#" uib-dropdown-toggle class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{main.currency.selectedCurrency.name}}<span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	            <li ng-repeat="currency in main.currency.currencies"><a href="" ng-click="main.currency.setCurrency(currency)">{{currency.name}}</a></li>
+	          </ul>
+	        </li>
+	     </ul>
+		
+		<ul class="nav navbar-nav navbar-right">
+	        <li class="dropdown" uib-dropdown>
+	          <a href="#" uib-dropdown-toggle class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{menu.service.language}} <span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	            <li><a href="" ng-click="menu.setLanguage('NL')" >{{main.language.translation.DUTCH}}</a></li>
+	            <li><a href="" ng-click="menu.setLanguage('EN')" >{{main.language.translation.ENGLISH}}</a></li>
+	          </ul>
+	        </li>
+	    </ul>
+    </div>
+</nav>
+
+<div ng-show="alert.show" ng-repeat="alert in main.alert.alerts">
+	<uib-alert type="{{alert.type}}" close="main.alert.closeAlert($index)" >{{alert.msg}}</uib-alert>
+</div>

@@ -1,0 +1,74 @@
+<div class="col-sm-10 col-sm-offset-2">
+	<h2>{{main.language.translation.ACCOUNT}}</h2>
+</div>
+
+<form class="form-horizontal" ng-submit="admin.getUserAccount()">
+	<div class="form-group">
+    <label for="inputUser" class="col-sm-2 control-label">{{main.language.translation.USER}}</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputUser" ng-model="admin.userAccount" placeholder="{{main.language.translation.SEARCH | lowercase}}">
+    </div>
+    </div>
+
+    <div class="form-group">
+	    <div class="col-sm-offset-2 col-sm-10">
+		     <button type="submit" class="btn btn-primary">{{main.language.translation.SEARCH}}</button>
+	    </div>
+    </div>
+</form>
+
+<form class="form-horizontal" ng-submit="admin.editAccount()">
+<div class="form-group">
+    <label for="inputFullName" class="col-sm-2 control-label">{{main.language.translation.FIRSTNAME}}</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputFullName" ng-model="admin.form.firstName" placeholder="{{main.language.translation.FIRSTNAME | lowercase}}" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputFullName" class="col-sm-2 control-label">{{main.language.translation.INSERTION}}</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputFullName" ng-model="admin.form.insertion" placeholder="{{main.language.translation.INSERTION | lowercase}}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputFullName" class="col-sm-2 control-label">{{main.language.translation.LASTNAME}}</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputFullName" ng-model="admin.form.lastName" placeholder="{{main.language.translation.LASTNAME | lowercase}}" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputFullName" class="col-sm-2 control-label">{{main.language.translation.ADDRESS}}</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputAdress" ng-model="admin.form.address" placeholder="{{main.language.translation.ADDRESS | lowercase}}" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputFullName" class="col-sm-2 control-label">{{main.language.translation.ADDRESSNUMBER}}</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputNumber" ng-model="admin.form.addressNumber" placeholder="{{main.language.translation.ADDRESSNUMBER | lowercase}}" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputFullName" class="col-sm-2 control-label">{{main.language.translation.ADDRESINSERTION}}</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputNumberAdd" ng-model="admin.form.addressInsertion" placeholder="{{main.language.translation.ADDRESINSERTION | lowercase}}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputFullName" class="col-sm-2 control-label">{{main.language.translation.POSTALCODE}}</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputPostalCode" ng-model="admin.form.postalCode" placeholder="{{main.language.translation.POSTALCODE | lowercase}}" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputFullName" class="col-sm-2 control-label">{{main.language.translation.CITY}}</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputCity" ng-model="admin.form.city" placeholder="plaats" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-primary">{{main.language.translation.EDIT}}</button>
+    </div>
+  </div>
+</form>

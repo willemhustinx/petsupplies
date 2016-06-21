@@ -1,0 +1,85 @@
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="btn btn-default navbar-btn" aria-label="Left Align" ng-class="{active: admin.layout == 'grid'}" ng-click="admin.layout = 'grid'">
+				{{main.language.translation.CATEGORY}}
+			</button>
+			<button type="button" class="btn btn-default navbar-btn" aria-label="Left Align" ng-class="{active: admin.layout == 'list'}" ng-click="admin.layout = 'list'">
+				Product
+			</button>
+		</div>
+		<form class="navbar-form navbar-right" role="search">
+			<div class="form-group">
+				<input type="text" class="form-control" ng-model="admin.searchFilter" placeholder="{{main.language.translation.SEARCH}}">
+			</div>
+		</form>
+		
+		<a href="#/product"><button type="button" class="btn btn-primary center-block" ng-show="admin.layout == 'list'">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Product
+		</button></a>
+		
+		<a href="#/category"><button type="button" class="btn btn-primary center-block" ng-show="admin.layout == 'grid'">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>{{main.language.translation.CATEGORY}}
+		</button></a>
+	</div>
+</nav>
+
+<div  ng-show="admin.layout == 'grid'">
+	<table class="table">
+	<tbody>
+	<thead>
+		<tr>
+			<th>{{main.language.translation.NAME}}</th>
+			<th>{{main.language.translation.EDIT}}</th>
+			<th>{{main.language.translation.DELETE}}</th>
+		</tr>
+	</thead>
+	<tr ng-repeat="c in admin.categoryservice.categories | search:admin.searchFilter | category:admin.categoryFilter">
+		<td>{{c.name[main.language.language]}}</td>
+		<td>
+			<button type="button" class="btn btn-primary" ng-click="admin.adminservice.editCategory(c)">
+				<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+			</button>
+		</td>
+		<td>
+			<button type="button" class="btn btn-primary" ng-click="admin.adminservice.removeCategory(c.id)">
+				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+			</button>
+		</td>
+	</tr>
+	</tbody>
+	</table>
+</div>
+
+<table class="table" ng-show="admin.layout == 'list'">
+	<tbody>
+	<thead>
+		<tr>
+			<th>{{main.language.translation.NAME}}</th>
+			<th>{{main.language.translation.DESCRIPTION}}</th>
+			<th>{{main.language.translation.PRICE}}</th>
+			<th>{{main.language.translation.EDIT}}</th>
+			<th>{{main.language.translation.DELETE}}</th>
+		</tr>
+	</thead>
+	<tr ng-repeat="p in admin.productservice.products | search:admin.searchFilter | category:admin.categoryFilter">
+		<td>{{p.name[main.language.language]}}</td>
+		<td>{{p.description[main.language.language]}}</td>
+		<td>{{p.price[main.currency.selectedCurrency.value] | isoCurrency:main.currency.selectedCurrency.value}}</td>
+		<td>
+			<button type="button" class="btn btn-primary center-block" ng-click="admin.adminservice.editProduct(p)">
+				<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+			</button>
+		</td>
+		<td>
+			<button type="button" class="btn btn-primary center-block" ng-click="admin.adminservice.removeProduct(p.id)">
+				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+			</button>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+
+
+

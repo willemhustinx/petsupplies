@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Admin</web-resource-name>
+			<url-pattern>/rest/admin/*</url-pattern>
+			<http-method>*</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
+	<!-- 
+	<session-config> 
+		<session-timeout>1</session-timeout> in minutes 
+	</session-config> 
+ -->
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>stateless</web-resource-name>
+			<url-pattern>/rest/stateless/*</url-pattern>
+			<http-method>*</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+
+	<login-config>
+		<auth-method>BASIC</auth-method>
+		<realm-name>petshop</realm-name>
+	</login-config>
+
+	<security-role>
+		<role-name>admin</role-name>
+	</security-role>
+
+	<security-role>
+		<role-name>customer</role-name>
+	</security-role>
+
+</web-app>
+

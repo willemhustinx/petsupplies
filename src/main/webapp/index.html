@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    
+    <title>Pet Supplies</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="style/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="style/custom.css" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/angular-cookies.min.js"></script>
+    <script src="scripts/angular-locale_nl-nl.js"></script>
+    <script src="scripts/angular-route.min.js"></script>
+    <script src="scripts/ui-bootstrap-tpls-0.14.3.min.js"></script>
+    <script src="scripts/angular-idle.min.js"></script>
+    
+    <!-- Angular -->
+    <script src="app/app.module.js"></script>
+    
+    <!-- Config -->
+    <script src="app/config/app.config.js"></script>
+    <script src="app/config/app.idle.config.js"></script>
+    
+    <!-- Services -->
+    <script src="app/service/language.service.js"></script>
+    <script src="app/service/product.service.js"></script>
+    <script src="app/service/category.service.js"></script>
+    <script src="app/service/cart.service.js"></script>
+    <script src="app/service/currency.service.js"></script>
+    <script src="app/service/iso4217.service.js"></script>
+    <script src="app/service/alert.service.js"></script>
+    <script src="app/service/login.service.js"></script>
+    <script src="app/service/account.service.js"></script>
+    <script src="app/service/admin.service.js"></script>
+    
+    <!-- Controllers -->
+    <script src="app/controller/main.controller.js"></script>
+    <script src="app/controller/shoppingcart.controller.js"></script>
+    <script src="app/controller/createaccount.controller.js"></script>
+    <script src="app/controller/menu.controller.js"></script>
+    <script src="app/controller/productlist.controller.js"></script>
+    <script src="app/controller/activate.controller.js"></script>
+    <script src="app/controller/account.controller.js"></script>
+    <script src="app/controller/admin.controller.js"></script>
+    <script src="app/controller/product.controller.js"></script>
+    <script src="app/controller/category.controller.js"></script>
+    
+    <!-- Directives -->
+    <script src="app/directive/header.directive.js"></script>
+    <script src="app/directive/footer.directive.js"></script>
+    <script src="app/directive/menu.directive.js"></script>
+    
+    <!-- Filters -->
+    <script src="app/filter/category.filter.js"></script>
+    <script src="app/filter/search.filter.js"></script>
+    <script src="app/filter/isoCurrency.filter.js"></script>
+    
+  </head>
+
+  <body ng-app="PetShopApp">
+	<div class="container" ng-controller="MainController as main">
+		<!-- Header -->
+		<header></header>			
+		
+		<ng-view></ng-view>
+	    
+	    <!-- Footer -->
+	    <footer></footer>
+	</div>
+  </body>
+</html>

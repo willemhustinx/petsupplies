@@ -1,0 +1,114 @@
+<table class="table">
+
+	<tbody>
+	<thead>
+		<tr>
+			<th>{{main.language.translation.NAME}}</th>
+			<th>{{main.language.translation.DESCRIPTION}}</th>
+			<th>{{main.language.translation.COSTPERUNIT}}</th>
+			<th>{{main.language.translation.AMOUNT}}</th>
+			<th>{{main.language.translation.PRICE}}</th>
+			<th></th>
+		</tr>
+	</thead>
+	
+
+	<tr ng-repeat="p in cart.cartservice.productsInCart">
+		<td>{{p.name[main.language.language]}}</td>
+		<td>{{p.description[main.language.language]}}</td>
+		<td>{{p.price[main.currency.selectedCurrency.value] | isoCurrency:main.currency.selectedCurrency.value}}</td>
+		<td>
+			<div class="input-group  plus-min-group">
+				<span class="input-group-btn">
+					<button class="btn btn-primary" type="button" ng-click="cart.substractFromAmount($index)">
+						<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+					</button>
+				</span>
+				<input type="text" class="form-control" value="{{p.amount}}" disabled>
+				<span class="input-group-btn">
+					<button class="btn btn-primary" type="button" ng-click="cart.addToAmount($index)">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					</button>
+				</span>
+			</div>
+    	</td>
+		<td>{{p.price[main.currency.selectedCurrency.value] * p.amount | isoCurrency:main.currency.selectedCurrency.value}}</td>
+		<td>
+			<button type="button" class="btn btn-danger" ng-click="cart.removeProduct($index)">
+				<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+			</button>
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>{{main.language.translation.TOTAL}}</td>
+		<td><b>{{cart.totalPrice() | isoCurrency:main.currency.selectedCurrency.value}}</b></td>
+		<td></td>
+	</tr>
+	</tbody>
+</table>
+
+<form class="form-horizontal"  ng-submit="cart.order()">
+  <div class="form-group">
+    <label for="inputFullName" class="col-sm-2 control-label">{{main.language.translation.FIRSTNAME}}</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputFullName" ng-model="cart.orderForm.firstName" placeholder="{{main.language.translation.FIRSTNAME | lowercase}}" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputFullName" class="col-sm-2 control-label">{{main.language.translation.INSERTION}}</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputFullName" ng-model="cart.orderForm.insertion" placeholder="{{main.language.translation.INSERTION | lowercase}}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputFullName" class="col-sm-2 control-label">{{main.language.translation.LASTNAME}}</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputFullName" ng-model="cart.orderForm.lastName" placeholder="{{main.language.translation.LASTNAME | lowercase}}" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAdress" class="col-sm-2 control-label">{{main.language.translation.ADDRESS}}</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputStreet" ng-model="cart.orderForm.address" placeholder="{{main.language.translation.ADDRESS | lowercase}}" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAdress" class="col-sm-2 control-label">{{main.language.translation.ADDRESSNUMBER}}</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputStreetNumber" ng-model="cart.orderForm.addressNumber" placeholder="{{main.language.translation.ADDRESSNUMBER | lowercase}}" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAdress" class="col-sm-2 control-label">{{main.language.translation.ADDRESINSERTION}}</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputsteetNumberAddition" ng-model="cart.orderForm.addressInsertion" placeholder="{{main.language.translation.ADDRESINSERTION | lowercase}}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPostalCode" class="col-sm-2 control-label">{{main.language.translation.POSTALCODE}}</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputPostalCode" ng-model="cart.orderForm.postalCode" placeholder="{{main.language.translation.POSTALCODE | lowercase}}" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputCity" class="col-sm-2 control-label">{{main.language.translation.CITY}}</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputCity" ng-model="cart.orderForm.city" placeholder="{{main.language.translation.CITY | lowercase}}" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputEmail" class="col-sm-2 control-label">{{main.language.translation.EMAIL}}</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="inputEmail" ng-model="cart.orderForm.email" placeholder="{{main.language.translation.EMAIL | lowercase}}" required>
+    </div>
+    	<input type="hidden"  ng-model="cart.orderForm.currency" >
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">{{main.language.translation.ORDER}}</button>
+    </div>
+  </div>
+</form>

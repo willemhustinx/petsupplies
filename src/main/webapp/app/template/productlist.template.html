@@ -1,0 +1,60 @@
+
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="btn btn-default navbar-btn" aria-label="Left Align" ng-class="{active: list.layout == 'grid'}" ng-click="list.layout = 'grid'">
+				<span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+			</button>
+			<button type="button" class="btn btn-default navbar-btn" aria-label="Left Align" ng-class="{active: list.layout == 'list'}" ng-click="list.layout = 'list'">
+				<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+			</button>
+		</div>
+		<form class="navbar-form navbar-right" role="search">
+			<div class="form-group">
+				<input type="text" class="form-control" ng-model="list.searchFilter" placeholder="{{main.language.translation.SEARCH}}">
+			</div>
+		</form>
+	</div>
+</nav>
+
+<div  ng-show="list.layout == 'grid'">
+	<div class="row">
+		<div class="col-sm-4 col-md-4" ng-repeat="p in list.productservice.products | search:list.searchFilter | category:list.categoryFilter">
+			<div class="thumbnail product-tile">
+				<h3>{{p.name[main.language.language]}}</h3>
+				<p>{{p.description[main.language.language]}}</p>
+				<p><strong>{{p.price[main.currency.selectedCurrency.value] | isoCurrency:main.currency.selectedCurrency.value}} </strong></p>
+				<button type="button" class="btn btn-primary" ng-click="list.addToCart(p.id)">
+					<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<table class="table" ng-show="list.layout == 'list'">
+	<tbody>
+	<thead>
+		<tr>
+			<th>{{main.language.translation.NAME}}</th>
+			<th>{{main.language.translation.DESCRIPTION}}</th>
+			<th>{{main.language.translation.PRICE}}</th>
+			<th>{{main.language.translation.BUY}}</th>
+		</tr>
+	</thead>
+	<tr ng-repeat="p in list.productservice.products | search:list.searchFilter | category:list.categoryFilter">
+		<td>{{p.name[main.language.language]}}</td>
+		<td>{{p.description[main.language.language]}}</td>
+		<td>{{p.price[main.currency.selectedCurrency.value] | isoCurrency:main.currency.selectedCurrency.value}}</td>
+		<td>
+			<button type="button" class="btn btn-primary" ng-click="list.addToCart(p.id)">
+				<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+			</button>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+
+
+
