@@ -8,7 +8,7 @@
 		this.getAccount = function(){
 			return $http.get('rest/account/info').success(function(response) {
 				if(response != null){
-			    	delete response.password;
+					delete response.password;
 			    	return response;
 			    }
 			}).catch(function (response) {

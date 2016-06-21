@@ -41,7 +41,7 @@
 	    vm.order = function() {
 	    	
 	    	var temporder = vm.orderForm;
-
+	    	
             //add the current curreny of the order to the database
 	    	temporder.currency = vm.currency.selectedCurrency.value;
             
@@ -54,8 +54,6 @@
 	                amount: productFromCart.amount 
 	            });
 	        })
-	        
-	        console.log(temporder);
 	        
 	        $http.post('rest/order/create', temporder).success(function(data, status) {
 	    		

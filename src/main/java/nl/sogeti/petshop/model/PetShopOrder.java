@@ -5,23 +5,25 @@ import java.util.List;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name = "PETSHOPORDER")
 public class PetShopOrder extends HasGeneratedId {
 
-    private String firstName;
-    private String insertion;
-    private String lastName;
-    private String address;
-    private String addressNumber;
-    private String addressInsertion;
-    private String postalCode;
-    private String city;
+    @NotNull
+    @Embedded
+    private Name name;
+
+    @NotNull
+    @Embedded
+    private Address address;
+
     private String email;
     private String currency;
 
@@ -30,96 +32,30 @@ public class PetShopOrder extends HasGeneratedId {
     private List<OrderProduct> orderProducts = new ArrayList<>();
 
     public PetShopOrder() {
-        // defualt constructor
+        super();
     }
 
-    public PetShopOrder(String firstName, String insertion, String lastName, String address, String addressNumber,
-            String addressInsertion, String postalCode, String city, String email) {
-        this.firstName = firstName;
-        this.insertion = insertion;
-        this.lastName = lastName;
+    public PetShopOrder(Name name, Address address, String email) {
+        super();
+        this.name = name;
         this.address = address;
-        this.addressNumber = addressNumber;
-        this.addressInsertion = addressInsertion;
-        this.postalCode = postalCode;
-        this.city = city;
         this.email = email;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public Name getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(Name name) {
+        this.name = name;
     }
 
-    public String getInsertion() {
-        return insertion;
-    }
-
-    public void setInsertion(String insertion) {
-        this.insertion = insertion;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
-    }
-
-    public String getAddressNumber() {
-        return addressNumber;
-    }
-
-    public void setAddressNumber(String addressNumber) {
-        this.addressNumber = addressNumber;
-    }
-
-    public String getAddressInsertion() {
-        return addressInsertion;
-    }
-
-    public void setAddressInsertion(String addressInsertion) {
-        this.addressInsertion = addressInsertion;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public List<OrderProduct> getOrderProducts() {
-        return orderProducts;
-    }
-
-    public void setOrderProducts(List<OrderProduct> orderProducts) {
-        this.orderProducts = orderProducts;
-    }
-
-    public void addOrderProduct(OrderProduct orderProduct) {
-        this.orderProducts.add(orderProduct);
     }
 
     public String getEmail() {
@@ -138,11 +74,21 @@ public class PetShopOrder extends HasGeneratedId {
         this.currency = currency;
     }
 
+    public List<OrderProduct> getOrderProducts() {
+        return orderProducts;
+    }
+
+    public void setOrderProducts(List<OrderProduct> orderProducts) {
+        this.orderProducts = orderProducts;
+    }
+
+    public void addOrderProduct(OrderProduct orderProduct) {
+        this.orderProducts.add(orderProduct);
+    }
+
     @Override
     public String toString() {
-        return "PetShopOrder [firstName=" + firstName + ", middleName=" + insertion + ", lastName=" + lastName
-                + ", street=" + address + ", streetNumber=" + addressNumber + ", steetNumberAddition="
-                + addressInsertion + ", postalCode=" + postalCode + ", city=" + city + ", email=" + email
+        return "PetShopOrder [name=" + name + ", address=" + address + ", email=" + email + ", currency=" + currency
                 + ", orderProducts=" + orderProducts + "]";
     }
 

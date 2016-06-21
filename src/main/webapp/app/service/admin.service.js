@@ -18,6 +18,7 @@
     		
     		return $http.get('rest/admin/info/' + email).success(function(response) {
 				if(response != null){
+					console.log(response);
 			    	delete response.password;
 			    	return response;
 			    }

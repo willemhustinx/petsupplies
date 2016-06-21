@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 @Embeddable
 public class LoginCartItem implements Serializable {
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity=Product.class)
     private Product product;
 
     private int amount;

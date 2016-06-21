@@ -12,11 +12,7 @@
 		//$cookies.putObject('shoppingCart', []);
 		
 		this.fillCartFromUser = function() {
-			console.log('start');
-			
 			$http.get('rest/cart').success(function(data) {
-				
-				console.log(data);
 				
 				angular.forEach(data, function(productLoginCart) {
 					var inCart = false;
@@ -46,13 +42,9 @@
 		}
 		
 		this.saveCartFromUser = function() {
-			console.log(vm.productsInCart)
-			
 			if(angular.isDefined($cookies.get('login'))) {
 				$http.post('rest/cart', vm.productsInCart).success(function(data) {
 					
-					console.log("gelukt");
-	    			
 	    		}).error(function (data, status){
 	    	        console.log("Error status : " + status);
 	    	    });
@@ -77,11 +69,9 @@
     				
     				if (!inCart) {
     					var cartProduct = new Object();
-    					console.log("toevoegen");
     					cartProduct.amount = 1;
     					cartProduct.product = product;
     					
-    					console.log(cartProduct);
     					vm.productsInCart = vm.productsInCart.concat([cartProduct]);
     				}
     				
@@ -98,7 +88,7 @@
 	    }
     	
     	this.emptyCart = function() {
-    		delete vm.productsInCart;
+    		vm.productsInCart = [];
 	    	$cookies.putObject('shoppingCart', []);
 	    	vm.saveCartFromUser();
 	    }

@@ -38,24 +38,18 @@
 					city: vm.city
 			};
 			
-			if(vm.password != vm.repeatPassword){
+			
+			if(vm.form.password != vm.form.repeatPassword){
 				alert("passwords dont match");
-			}else{		
-				$http.post('http://localhost:8080/PetShop/rest/account/create/', vm.account).success(function() {
+			}else{
+				delete vm.form.repeatPassword;
+				$http.post('http://localhost:8080/PetShop/rest/account/create/', vm.form).success(function() {
 		    		vm.alert.alerts[1].show = true;
 		    		$location.path("/");
 					//empty the input fields of the form
-					vm.email = "";
-					vm.password = "";
-					vm.repeatPassword = "";
-					vm.firstName = "";
-					vm.nameInsertion = "";
-					vm.lastName = "";
-					vm.adress = "";
-					vm.adressNumber = "";
-					vm.adressInsertion = "";
-					vm.postalCode = "";
-					vm.city = "";	
+		    		
+		    		vm.form = []
+		    			
 				}).error(function(status) {
 					console.log("Account creation error, oh noes D:");
 				});

@@ -1,5 +1,5 @@
 projectKey=org.jboss.tools.examples:PetShop
 serverUrl=http://localhost:9000
 dashboardUrl=http://localhost:9000/dashboard/index/org.jboss.tools.examples:PetShop
-ceTaskId=AVJVILO2r1h-5omDepcN
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AVJVILO2r1h-5omDepcN
+ceTaskId=AVJol7IJTX6sZsZfnlfC
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AVJol7IJTX6sZsZfnlfC

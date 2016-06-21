@@ -14,7 +14,7 @@ import javax.persistence.criteria.CriteriaQuery;
 
 public abstract class AbstractCrudRepository<T> {
     @PersistenceContext
-    EntityManager entityManager;
+    public EntityManager entityManager;
 
     protected abstract Class<T> getEntityClass();
 

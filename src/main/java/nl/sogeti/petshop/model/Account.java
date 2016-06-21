@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -29,58 +30,36 @@ public class Account implements Serializable {
     private String password;
 
     @NotNull
-    private String firstName;
+    @Embedded
+    private Name name;
 
-    private String insertion;
+    @NotNull
+    @Embedded
+    private Address address;
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles = new ArrayList<>();
 
     @NotNull
-    private String lastName;
-
-    @NotNull
-    private String address;
-
-    @NotNull
-    private String addressNumber;
-
-    private String addressInsertion;
-
-    @NotNull
-    private String postalCode;
-
-    @NotNull
-    private String city;
-
-    @NotNull
     private Boolean activated;
 
-    public Account(String email, String password, String firstName, String insertion, String lastName, String address,
-            String addressNumber, String addressInsertion, String postalCode, String city) {
+    public Account() {
+        super();
+    }
+
+    public Account(String email, String password, Name name, Address address) {
         super();
         this.email = email;
         this.password = password;
-        this.firstName = firstName;
-        this.insertion = insertion;
-        this.lastName = lastName;
+        this.name = name;
         this.address = address;
-        this.addressNumber = addressNumber;
-        this.addressInsertion = addressInsertion;
-        this.postalCode = postalCode;
-        this.city = city;
-        this.activated = false;
-    }
-
-    public Account() {
-        // default constructor
     }
 
     public String createHash() {
         String stringToEncrypt = email + "-" + password;
 
         String encryptedString = "";
-        String base64encodedString = "";
+        String base64encodedString = null;
 
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
@@ -92,6 +71,7 @@ public class Account implements Serializable {
 
         try {
             base64encodedString = Base64.getEncoder().encodeToString(encryptedString.getBytes("utf-8"));
+
         } catch (UnsupportedEncodingException e) {
             Logger.getLogger(Account.class.getName()).log(Level.WARNING, "Cannot encode password", e);
         }
@@ -100,46 +80,6 @@ public class Account implements Serializable {
         base64encodedString = base64encodedString.replace('=', 'W');
 
         return base64encodedString;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getInsertion() {
-        return insertion;
-    }
-
-    public void setInsertion(String insertion) {
-        this.insertion = insertion;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getAddressNumber() {
-        return addressNumber;
-    }
-
-    public void setAddressNumber(String addressNumber) {
-        this.addressNumber = addressNumber;
-    }
-
-    public String getAddressInsertion() {
-        return addressInsertion;
-    }
-
-    public void setAddressInsertion(String addressInsertion) {
-        this.addressInsertion = addressInsertion;
     }
 
     public String getEmail() {
@@ -158,28 +98,20 @@ public class Account implements Serializable {
         this.password = password;
     }
 
-    public String getAddress() {
+    public Name getName() {
+        return name;
+    }
+
+    public void setName(Name name) {
+        this.name = name;
+    }
+
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
     }
 
     public List<String> getRoles() {
@@ -200,9 +132,8 @@ public class Account implements Serializable {
 
     @Override
     public String toString() {
-        return "Account [email=" + email + ", password=" + password + ", firstName=" + firstName + ", insertion="
-                + insertion + ", roles=" + roles + ", lastName=" + lastName + ", address=" + address
-                + ", addressNumber=" + addressNumber + ", addressInsertion=" + addressInsertion + ", postalCode="
-                + postalCode + ", city=" + city + ", activated=" + activated + "]";
+        return "Account [email=" + email + ", password=" + password + ", name=" + name + ", address=" + address
+                + ", roles=" + roles + ", activated=" + activated + "]";
     }
+
 }

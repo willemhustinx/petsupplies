@@ -109,14 +109,14 @@ public class AdminRest {
 
         Account ac = as.find(account.getEmail());
 
-        ac.setFirstName(account.getFirstName());
-        ac.setInsertion(account.getInsertion());
-        ac.setLastName(account.getLastName());
+        ac.getName().setFirstName(account.getName().getFirstName());
+        ac.getName().setInsertion(account.getName().getInsertion());
+        ac.getName().setLastName(account.getName().getLastName());
         ac.setAddress(account.getAddress());
-        ac.setAddressInsertion(account.getAddressInsertion());
-        ac.setAddressNumber(account.getAddressNumber());
-        ac.setPostalCode(account.getPostalCode());
-        ac.setCity(account.getCity());
+        ac.getAddress().setAddressInsertion(account.getAddress().getAddressInsertion());
+        ac.getAddress().setAddressNumber(account.getAddress().getAddressNumber());
+        ac.getAddress().setPostalCode(account.getAddress().getPostalCode());
+        ac.getAddress().setCity(account.getAddress().getCity());
 
         as.merge(ac);
     }

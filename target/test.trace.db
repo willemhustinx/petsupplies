@@ -1,0 +1,27 @@
+01-21 11:26:19 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACCOUNT_ROLES" not found; SQL statement:
+alter table Account_roles drop constraint FK_4bply6pskkn6y6vdbcn1h0yep if exists [42102-170]
+01-21 11:26:19 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "CATEGORYNAMES" not found; SQL statement:
+alter table CATEGORYNAMES drop constraint FK_1hf8dist3uami8vg3n6jhledh if exists [42102-170]
+01-21 11:26:19 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "LOGINCARTRODUCTS" not found; SQL statement:
+alter table LOGINCARTRODUCTS drop constraint FK_6mfmnee15k2nuivkpw7h8clcx if exists [42102-170]
+01-21 11:26:19 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "LOGINCARTRODUCTS" not found; SQL statement:
+alter table LOGINCARTRODUCTS drop constraint FK_3j0us24onk2tb7xvjk8riyd5a if exists [42102-170]
+01-21 11:26:19 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "LOGINCART" not found; SQL statement:
+alter table LoginCart drop constraint FK_lfk4m4grlol3tibw6q07pjg18 if exists [42102-170]
+01-21 11:26:19 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "ORDERPRODUCTS" not found; SQL statement:
+alter table ORDERPRODUCTS drop constraint FK_exn7060vju4dqr7cg18bjhgmx if exists [42102-170]
+01-21 11:26:19 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "PRODUCTDESCRIPTION" not found; SQL statement:
+alter table PRODUCTDESCRIPTION drop constraint FK_65qbhex2ghfam783d4jewg3nj if exists [42102-170]
+01-21 11:26:19 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "PRODUCTNAMES" not found; SQL statement:
+alter table PRODUCTNAMES drop constraint FK_a514n2kpocrkrci9hd3pfycag if exists [42102-170]
+01-21 11:26:19 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "PRODUCTPRICE" not found; SQL statement:
+alter table PRODUCTPRICE drop constraint FK_drm1h1ibocdhfu7kqx73df086 if exists [42102-170]

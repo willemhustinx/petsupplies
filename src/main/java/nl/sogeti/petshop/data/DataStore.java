@@ -11,9 +11,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import nl.sogeti.petshop.model.Account;
+import nl.sogeti.petshop.model.Address;
 import nl.sogeti.petshop.model.Category;
 import nl.sogeti.petshop.model.LoginCart;
 import nl.sogeti.petshop.model.LoginCartItem;
+import nl.sogeti.petshop.model.Name;
 import nl.sogeti.petshop.model.OrderProduct;
 import nl.sogeti.petshop.model.PetShopOrder;
 import nl.sogeti.petshop.model.Product;
@@ -144,23 +146,19 @@ public class DataStore {
         mockdata.add(p7);
 
         // Account mockdata
-        Account a1 = new Account("admin", "admin", "admin", "", "admin", "admin", "1", "", "1111AA",
-                "adminstein");
+        Name a1n = new Name("Ad", "ad", "Admin");
+        Address a1a = new Address("admin", "1", "", "1111AA", "adminstein");
+        Account a1 = new Account("admin", "admin", a1n, a1a);
         a1.setActivated(true);
         a1.getRoles().add("admin");
         mockdata.add(a1);
 
-        Account a2 = new Account("test@test.nl", "test", "test", "", "test", "test", "1", "", "1111AA", "test");
+        Name a2n = new Name("T", "de", "Tester");
+        Address a2a = new Address("test", "1", "", "1111AA", "test");
+        Account a2 = new Account("test@test.nl", "test", a2n, a2a);
         a2.getRoles().add("customer");
         a2.setActivated(true);
         mockdata.add(a2);
-
-        // Order mockdata
-        PetShopOrder o1 = new PetShopOrder("Willem", "", "Hustinx", "Otto van Reesweg", "44", "", "4105AB", "Culemborg",
-                "test");
-        o1.addOrderProduct(new OrderProduct("Apennoten", 15.99, 3));
-        o1.addOrderProduct(new OrderProduct("Olifanten Pinda's", 10.00, 5));
-        mockdata.add(o1);
 
         // Login mockdata
         List<LoginCartItem> l1p = new ArrayList<>();
@@ -170,8 +168,16 @@ public class DataStore {
         mockdata.add(l1);
 
         // Order mockdata
-        PetShopOrder o2 = new PetShopOrder("Willem", "", "Hustinx", "Otto van Reesweg", "44", "", "4105AB", "Culemborg",
-                "test");
+        Name o1n = new Name("Willem", "", "Hustinx");
+        Address o1a = new Address("Otto van Reesweg", "44", "", "4105AB", "Culemborg");
+        PetShopOrder o1 = new PetShopOrder(o1n, o1a, "test");
+        o1.addOrderProduct(new OrderProduct("Apennoten", 15.99, 3));
+        o1.addOrderProduct(new OrderProduct("Olifanten Pinda's", 10.00, 5));
+        mockdata.add(o1);
+
+        Name o2n = new Name("Willem", "", "Hustinx");
+        Address o2a = new Address("Otto van Reesweg", "44", "", "4105AB", "Culemborg");
+        PetShopOrder o2 = new PetShopOrder(o2n, o2a, "test");
         o2.addOrderProduct(new OrderProduct("Dingen", 20.55, 1));
         o2.addOrderProduct(new OrderProduct("More Stuff", 17.00, 1));
         mockdata.add(o2);

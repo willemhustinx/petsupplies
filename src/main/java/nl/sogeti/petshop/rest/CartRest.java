@@ -1,5 +1,6 @@
 package nl.sogeti.petshop.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -37,12 +38,12 @@ public class CartRest {
             LoginCart lc = cs.find(ac);
 
             if (lc == null) {
-                return null;
+                return new ArrayList<>();
             }
 
             return lc.getLoginCartItems();
         }
-        return null;
+        return new ArrayList<>();
     }
 
     @POST
